@@ -1,0 +1,11 @@
+<h1 class="w3-center w3-container w3-green">Edição de Gibis</h1>
+<form class="w3-container">
+    <div><label>Título:</label><input class="w3-input w3-border w3-round" type="text" id="txtTitulo" maxlength="1000" name="Titulo" [(ngModel)]="gibi.Titulo"></div>
+    <div><label>Editora:</label><input class="w3-input w3-border w3-round" type="text" id="txtEditora" maxlength="1000" name="Editora" [(ngModel)]="gibi.Editora"></div>
+        <div><label>Valor:</label><input class="w3-input w3-border w3-round" type="number" id="txtValor" name="Valor" [(ngModel)]="gibi.Valor"></div>
+        <div><label>DataPublicacao:</label><input class="w3-input w3-border w3-round" type="date" id="txtDataPublicacao" name="DataPublicacao" [ngModel] = "gibi.DataPublicacao | date:'yyyy-MM-dd'" (ngModelChange)="gibi.DataPublicacao=$event"></div>
+        <div class="w3-margin">
+        <button type="button" id="btnVoltar" class="w3-btn w3-green" (click)="goToIndex()">Voltar</button>
+        <button type="button" id="btnAlterar" class="w3-btn w3-green" (click)="edit()">Alterar</button>
+    </div>
+</form>

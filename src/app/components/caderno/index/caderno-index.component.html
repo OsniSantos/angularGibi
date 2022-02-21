@@ -1,0 +1,41 @@
+<div>
+    <h1 class="w3-center w3-container w3-blue">Lista de cadernos</h1>
+    <div class="w3-margin">
+        <form>
+            <label>Id:</label><input type="text" id="txtId" maxlength="6" name="txtId" [(ngModel)]="searchId">
+            <label class="w3-margin-left">Título:</label><input type="text" id="txtTitulo" maxlength="100" name="txtTitulo" [(ngModel)]="searchTitulo">
+            <button type="button" id="btnListar" class="w3-btn w3-blue w3-margin-left" (click)="get()">Listar</button>
+            <button type="button" id="btnNovo" class="w3-btn w3-blue w3-margin-left" (click)="goToCreate()">Novo</button>
+        </form> 
+    </div>
+    <div class="w3-responsive">
+        <table id="tbCadernos" class="w3-table-all">  
+            <thead>
+                <tr class="w3-blue">
+                    <td class="w3-center">Id</td>
+                    <td class="w3-center">Título</td>
+                    <td class="w3-center">Valor</td>
+                    <td class="w3-center">Nr Folhas</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody *ngIf="cadernos.length > 0; else listaVazia">
+                <tr *ngFor="let caderno of cadernos">
+                    <td><a style="cursor: pointer;" (click)="goToEdit(caderno.Id)">{{caderno.Id}}</a></td>
+                    <td>{{caderno.Titulo}}</td>
+                    <td class="w3-right-align">{{caderno.Valor}}</td>
+                    <td class="w3-right-align">{{caderno.NrFolhas}}</td>
+                    <td><a style="cursor: pointer;" (click)="delete(caderno.Id)">Excluir</a></td>
+                </tr>                
+            </tbody>
+        </table>
+    </div> 
+</div>
+
+<ng-template #listaVazia>
+    <tbody>
+        <tr>
+            <td colspan="5">Nenhum caderno encontrado.</td>
+        </tr>
+    </tbody>
+</ng-template>
